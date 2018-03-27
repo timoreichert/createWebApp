@@ -1,11 +1,11 @@
 # createWebApp
 create a simple web app
 
-## Table of COntents
+## Table of Contents
 
-* [Installation] (#installation)
-* [Usage] (#usage)
-* [License] (#license)
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
 
 ## Installation
 
