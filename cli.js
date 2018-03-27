@@ -101,7 +101,6 @@ oraPromise(lib.mDir(appDir), chalk.yellow("mkdir ") + chalk.blue(appDir)).then(
       lib.run("npm init -y", { cwd: appDir }),
       chalk.yellow("exec npm init -y")
     )
-      /*
       .then(ora =>
         oraPromise(
           lib.run("npm install --save normalize.css", { cwd: appDir }),
@@ -114,7 +113,6 @@ oraPromise(lib.mDir(appDir), chalk.yellow("mkdir ") + chalk.blue(appDir)).then(
           chalk.yellow("npm install --save-dev browser-sync")
         )
       )
-      */
       .then(ora =>
         oraPromise(
           lib.wFile(appDir, "index.js", index.js),
