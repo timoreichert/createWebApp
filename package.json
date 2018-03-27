@@ -8,6 +8,10 @@
   },
   "keywords": [],
   "author": "Timo Reichert <timo.reichert82@googlemail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timoreichert/createWebApp.git"
+  },
   "license": "MIT",
   "bin": {
     "cwa": "./cli.js"
