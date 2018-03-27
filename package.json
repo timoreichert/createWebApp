@@ -8,6 +8,10 @@
   },
   "keywords": [],
   "author": "Timo Reichert <timo.reichert82@googlemail.com>",
+  "bugs": {
+    "url": "https://github.com/timoreichert/createWebApp/issues",
+    "email": "timo.reichert82@googlemail.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/timoreichert/createWebApp.git"
