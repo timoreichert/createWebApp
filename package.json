@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "Timo Reichert <timo.reichert82@googlemail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bin": {
     "cwa": "./cli.js"
   },
