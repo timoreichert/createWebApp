@@ -1,5 +1,5 @@
 {
-  "name": "@tr/createWebApp",
+  "name": "@treichert1982/create-web-app",
   "version": "0.0.1",
   "description": "create a simple web app",
   "main": "index.js",
