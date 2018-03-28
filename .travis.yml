@@ -1,3 +1,9 @@
 language: node_js
 node_js:
- - "node"
+- node
+deploy:
+  provider: npm
+  email: timo.reichert82@googlemail.com
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
