@@ -1,10 +1,11 @@
 {
   "name": "@treichert1982/create-web-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "create a simple web app",
   "main": "index.js",
   "scripts": {
-    "test": "jshint cli.js"
+    "test": "jshint cli.js",
+    "release": "standard-version"
   },
   "keywords": [],
   "author": "Timo Reichert <timo.reichert82@googlemail.com>",
@@ -29,7 +30,8 @@
   },
   "devDependencies": {
     "browser-sync": "^2.23.6",
-    "jshint": "^2.9.5"
+    "jshint": "^2.9.5",
+    "standard-version": "^4.3.0"
   },
   "dependencies": {
     "chalk": "^2.3.2",
