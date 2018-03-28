@@ -3,12 +3,12 @@
 
 const fs = require("fs");
 const path = require("path");
-const { exec } = require("child_process");
+const { execFile } = require("child_process");
 
 module.exports = {
-  run: (command, options) =>
+  runWithArgs: (command, args , options) =>
     new Promise((resolve, reject) =>
-      exec(command, options, err => (err ? reject(err) : resolve(command)))
+      execFile(command, args, options, (error, stdout, stderr) => (error ? reject(error) : resolve(stdout)))
     ),
   mDir: dir =>
     new Promise((resolve, reject) =>

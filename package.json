@@ -1,6 +1,6 @@
 {
   "name": "@treichert1982/create-web-app",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "create a simple web app",
   "main": "index.js",
   "scripts": {
@@ -36,6 +36,7 @@
     "clear": "^0.1.0",
     "figlet": "^1.2.0",
     "meow": "^4.0.0",
-    "ora": "^2.0.0"
+    "ora": "^2.0.0",
+    "semver": "^5.5.0"
   }
 }

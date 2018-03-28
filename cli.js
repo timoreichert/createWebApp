@@ -9,6 +9,7 @@ const meow = require("meow");
 const chalk = require("chalk");
 const clear = require("clear");
 const figlet = require("figlet");
+const semver = require("semver");
 const Ora = require("ora");
 
 const cli = meow(
@@ -98,19 +99,29 @@ console.log(
 oraPromise(lib.mDir(appDir), chalk.yellow("mkdir ") + chalk.blue(appDir)).then(
   ora =>
     oraPromise(
-      lib.run("npm init -y", { cwd: appDir }),
+      lib.runWithArgs("npm", ["init", "-y"], { cwd: appDir }),
       chalk.yellow("exec npm init -y")
     )
       .then(ora =>
         oraPromise(
-          lib.run("npm install --save normalize.css", { cwd: appDir }),
+          lib.runWithArgs("npm", ["install", "--save", "normalize.css"], {
+            cwd: appDir
+          }),
           chalk.yellow("npm install --save normalize.css")
         )
       )
       .then(ora =>
         oraPromise(
-          lib.run("npm install --save-dev browser-sync", { cwd: appDir }),
-          chalk.yellow("npm install --save-dev browser-sync")
+          lib.runWithArgs("browser-sync", ["--version"])
+            .then(version => {
+              if (semver.lt(version, "2.23.6")) {
+                lib.runWithArgs("npm", ["i", "-g", "browser-sync"]);
+              } else {
+                return Promise.resolve(ora);
+              }
+            })
+            .catch(() => lib.runWithArgs("npm", ["i", "-g", "browser-sync"])),
+          chalk.yellow("check browser-sync")
         )
       )
       .then(ora =>
@@ -156,28 +167,30 @@ oraPromise(lib.mDir(appDir), chalk.yellow("mkdir ") + chalk.blue(appDir)).then(
       )
       .then(ora =>
         oraPromise(
-          lib.run("git init", { cwd: appDir }),
+          lib.runWithArgs("git", ["init"], { cwd: appDir }),
           chalk.yellow("git init"),
           cli.flags.skipGit
         )
       )
       .then(ora =>
         oraPromise(
-          lib.run("git add .", { cwd: appDir }),
+          lib.runWithArgs("git", ["add", "."], { cwd: appDir }),
           chalk.yellow("git add ."),
           cli.flags.skipGit
         )
       )
       .then(ora =>
         oraPromise(
-          lib.run('git commit -m "Initial commit"', { cwd: appDir }),
+          lib.runWithArgs("git", ["commit", "-m", '"Initial commit"'], {
+            cwd: appDir
+          }),
           chalk.yellow('git commit -m "Initial commit"'),
           cli.flags.skipGit
         )
       )
       .then(ora =>
         oraPromise(
-          lib.run(`code ${appDir}`),
+          lib.runWithArgs("code", [appDir]),
           chalk.yellow("code ") + chalk.blue(appDir)
         )
       )
