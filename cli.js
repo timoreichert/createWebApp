@@ -112,15 +112,26 @@ oraPromise(lib.mDir(appDir), chalk.yellow("mkdir ") + chalk.blue(appDir)).then(
       )
       .then(ora =>
         oraPromise(
-          lib.runWithArgs("browser-sync", ["--version"])
+          lib
+            .runWithArgs("browser-sync", ["--version"])
             .then(version => {
               if (semver.lt(version, "2.23.6")) {
-                lib.runWithArgs("npm", ["i", "-g", "browser-sync"]);
+                return lib.runWithArgs("npm", [
+                  "i",
+                  "--save-dev",
+                  "browser-sync"
+                ]);
               } else {
-                return Promise.resolve(ora);
+                return lib.runWithArgs("npm", ["link", "browser-sync"], {
+                  cwd: appDir
+                });
               }
             })
-            .catch(() => lib.runWithArgs("npm", ["i", "-g", "browser-sync"])),
+            .catch(() =>
+              lib.runWithArgs("npm", ["i", "--save-dev", "browser-sync"], {
+                cwd: appDir
+              })
+            ),
           chalk.yellow("check browser-sync")
         )
       )
