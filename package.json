@@ -4,7 +4,7 @@
   "description": "create a simple web app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jshint cli.js"
   },
   "keywords": [],
   "author": "Timo Reichert <timo.reichert82@googlemail.com>",
@@ -24,7 +24,8 @@
     "test": "test"
   },
   "devDependencies": {
-    "browser-sync": "^2.23.6"
+    "browser-sync": "^2.23.6",
+    "jshint": "^2.9.5"
   },
   "dependencies": {
     "chalk": "^2.3.2",
